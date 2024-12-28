@@ -13,7 +13,7 @@ export const Bio = {
     "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
   github: "https://github.com/akshatf",
   resume:
-    "https://drive.google.com/file/d/1-DU_wh9eeVL1jgPqhvePFtDRTYkNeIfI/view?usp=sharing",
+    "https://drive.google.com/file/d/1b6M7T1OO64AEbddpcWiglVlggMjq7vAU/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/akshat-farkya-b92294219/",
   twitter: "https://twitter.com/akshtf",
   insta: "https://www.instagram.com/_.akshatf/",
