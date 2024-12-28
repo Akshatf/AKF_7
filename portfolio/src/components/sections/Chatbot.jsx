@@ -72,7 +72,7 @@ const Chatbot = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/send-msg', {
+            const response = await fetch('https://akf-7.onrender.com/send-msg', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams({ MSG: input }),
