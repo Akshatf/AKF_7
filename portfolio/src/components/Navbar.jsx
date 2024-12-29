@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
-import { MenuRounded } from "@mui/icons-material";
+import { MenuRounded, Close } from "@mui/icons-material";
 
 // Styled components for Navbar
 const Nav = styled.div`
@@ -166,7 +166,11 @@ const Navbar = () => {
         </NavLogo>
 
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
-          <MenuRounded style={{ color: "inherit" }} />
+          {isOpen ? (
+            <Close style={{ color: "inherit" }} />
+          ) : (
+            <MenuRounded style={{ color: "inherit" }} />
+          )}
         </MobileIcon>
 
         <NavItems>
@@ -187,12 +191,22 @@ const Navbar = () => {
               Work
             </NavLink>
             <GithubButton
+              href={Bio.resume}
+              target="_Blank"
+              // style={{
+              //   background: theme.primary,
+              //   color: theme.text_primary,
+              // }}
+            >
+              Resume
+            </GithubButton>
+            <GithubButton
               href={Bio.github}
               target="_Blank"
-              style={{
-                background: theme.primary,
-                color: theme.text_primary,
-              }}
+              // style={{
+              //   background: theme.primary,
+              //   color: theme.text_primary,
+              // }}
             >
               Github
             </GithubButton>
