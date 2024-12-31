@@ -171,8 +171,8 @@ const Contact = () => {
       <Wrapper>
         <Title>Contact</Title>
         <Desc>Feel free to reach out to me for any questions , opportunities or collaborations !</Desc>
-        <Desc>You can Contact me via <a href="mailto:akshatfarkya07@gmail.com">Email</a> or fill the below form , I'll get in your touch </Desc>
-        <a href="https://wa.me/919425718644?text=Hey!%20I%20am%20Akshat.%20I%20would%20like%20to%20connect%20with%20you." target="_blank">Send a message on WhatsApp</a>
+        <Desc>You can Contact me via <a href="mailto:akshatfarkya07@gmail.com">Email</a> or fill the below form </Desc>
+        {/* <a href="https://wa.me/919425718644?text=Hey!%20I%20am%20Akshat.%20I%20would%20like%20to%20connect%20with%20you." target="_blank">Send a message on WhatsApp</a> */}
         <ContactForm onSubmit={handleSubmit(onSubmit)}>
           <ContactTitle>Email Me 🚀</ContactTitle>
 
