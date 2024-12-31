@@ -12,7 +12,7 @@ const Chatbot = () => {
     const [editing, setEditing] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [loadingMessages] = useState(['Fetching data...', 'Analyzing...', 'Generating response...']);
+    const [loadingMessages] = useState(['Fetching data...', 'Analyzing...', 'Generating...']);
     const [currentLoadingIndex, setCurrentLoadingIndex] = useState(0);
     const [chatbotOpen, setChatbotOpen] = useState(false);
     const [documentationOpen, setDocumentationOpen] = useState(false);
