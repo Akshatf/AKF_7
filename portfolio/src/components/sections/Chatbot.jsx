@@ -15,6 +15,7 @@ const Chatbot = () => {
     const [loadingMessages] = useState(['Fetching data...', 'Analyzing...', 'Generating response...']);
     const [currentLoadingIndex, setCurrentLoadingIndex] = useState(0);
     const [chatbotOpen, setChatbotOpen] = useState(false);
+    const [documentationOpen, setDocumentationOpen] = useState(false);
     const [botResponding, setBotResponding] = useState(false);
     const messagesEndRef = useRef(null);
     const [showFirstMessage, setShowFirstMessage] = useState(false);
@@ -74,7 +75,7 @@ const Chatbot = () => {
 
         const loadingInterval = setInterval(() => {
             setCurrentLoadingIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length);
-        }, 1200);
+        }, 1500);
 
         try {
             const response = await fetch('https://akf-7.onrender.com/send-msg', {
@@ -170,6 +171,26 @@ const Chatbot = () => {
         setMessages([{ type: 'bot', text: 'Hi! Ask me anything about Akshat.' }]);
     };
 
+    const navigateToDocumentation = () => {
+        window.open('https://your-documentation-link.com', '_blank');
+    };
+
+    const DocumentationBox = styled.div`
+        position: fixed;
+        bottom: 110px;
+        right: 30px;
+        width: 350px;
+        color:black;
+        height: 400px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        overflow-y: auto;
+        font-size: 14px;
+        border-radius: 8px;
+        z-index: 20;
+    `;
     const BotButton = styled.button`
         position: fixed;
         bottom: 30px;
@@ -192,6 +213,29 @@ const Chatbot = () => {
             transition: all 0.3s ease;
             background: transparent;
         }
+    `;
+
+    const documentationContent = `
+    **Chatbot Functionalities and Guide**
+    
+    ---
+    
+    ### Introduction
+    This document provides an overview of the chatbot developed by Akshat Farkya, outlining its features, the technology used, and guidance for users to make the most of its functionalities.
+    
+    ### Key Features
+    - **Personal Information Retrieval**: Ask about Akshat’s age, inspirations, hobbies, or favorite music.
+    - **Educational Background**: Retrieve detailed academic history.
+    - **Professional Aspirations**: Discover Akshat’s career objectives, short-term goals, and long-term ambitions.
+    - **Projects and Achievements**: Learn about Akshat’s personal projects and professional accomplishments.
+    - **Contact Information**: Get Akshat’s professional contact details.
+    - **Training and Skills**: Explore Akshat’s technical skills and training certifications.
+    - **Extracurricular Activities**: Gain insights into Akshat’s extracurricular engagements and strengths.
+    - **Personal Preferences**: Learn about Akshat’s favorite places, foods, and hobbies.
+    
+    ---
+    
+    This chatbot is a reflection of Akshat’s dedication to combining technical expertise with user-focused design.
     `;
 
     return (
@@ -225,6 +269,7 @@ const Chatbot = () => {
                         <div className="chatbox">
                             <div className="chatbox-header">
                                 🐼 Akshat's Virtual Assistant
+                                <button onClick={() => setDocumentationOpen(true)}>📄</button>
                                 <button onClick={resetChat} className="refresh-chatbot-btn">🔄</button>
                                 <button onClick={() => setChatbotOpen(false)} className="close-chatbot-btn">❌</button>
                             </div>
@@ -245,12 +290,31 @@ const Chatbot = () => {
                                     type="text"
                                     value={input}
                                     onChange={handleInputChange}
-                                    onKeyDown={handleKeyPress}
+                                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                                     placeholder="Type a message..."
                                 />
                                 <button onClick={sendMessage}>Send</button>
                             </div>
                         </div>
+
+                        {documentationOpen && (
+                            <DocumentationBox>
+                                <button
+                                    style={{
+                                        float: 'right',
+                                        border: 'none',
+                                        background: 'transparent',
+                                        cursor: 'pointer',
+                                        fontSize: '16px',
+                                        fontWeight: 'bold'
+                                    }}
+                                    onClick={() => setDocumentationOpen(false)}
+                                >
+                                    ❌
+                                </button>
+                                <div dangerouslySetInnerHTML={{ __html: documentationContent.replace(/\n/g, '<br>') }} />
+                            </DocumentationBox>
+                        )}
                     </div>
                 )}
             </div>
