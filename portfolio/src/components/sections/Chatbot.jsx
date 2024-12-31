@@ -74,7 +74,7 @@ const Chatbot = () => {
 
         const loadingInterval = setInterval(() => {
             setCurrentLoadingIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length);
-        }, 1500);
+        }, 1200);
 
         try {
             const response = await fetch('https://akf-7.onrender.com/send-msg', {

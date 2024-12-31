@@ -15,7 +15,7 @@
 /backend/node_modules
 /backend/akf.json
 /node_modules
-# misc
+# mis
 .DS_Store
 .env.local
 .env.development.local

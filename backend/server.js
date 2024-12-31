@@ -33,7 +33,7 @@ app.post('/send-msg',(req,res)=>{
 
 
 /**
- * Send a query to the dialogflow agent, and return the query result.
+ * Send a query to the dialogflow agent, and return the query resul
  * @param {string} projectId The project to be used
  */
 async function runSample(msg,projectId = 'akf-chatbot-wman') {
