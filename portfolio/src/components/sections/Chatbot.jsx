@@ -17,11 +17,16 @@ const Chatbot = () => {
     const [chatbotOpen, setChatbotOpen] = useState(false);
     const [documentationOpen, setDocumentationOpen] = useState(false);
     const [botResponding, setBotResponding] = useState(false);
+    const [placeholderIndex, setPlaceholderIndex] = useState(0);
     const messagesEndRef = useRef(null);
     const [showFirstMessage, setShowFirstMessage] = useState(false);
     const [showSecondMessage, setShowSecondMessage] = useState(false);
     const [hideMessages, setHideMessages] = useState(false);
-
+    const placeholderQuestions = [
+        "Tell me about Akshat",
+        "What's his technical skill",
+        "Tell me about his hobbies",
+    ];
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
@@ -53,6 +58,13 @@ const Chatbot = () => {
             clearTimeout(hideMessagesTimer);
         };
     };
+    useEffect(() => {
+        const placeholderInterval = setInterval(() => {
+            setPlaceholderIndex((prevIndex) => (prevIndex + 1) % placeholderQuestions.length);
+        }, 3000);
+
+        return () => clearInterval(placeholderInterval);
+    }, []);
 
     const handleInputChange = (e) => setInput(e.target.value);
 
@@ -312,7 +324,10 @@ This chatbot is a reflection of Akshat’s dedication to combining technical exp
                                     value={input}
                                     onChange={handleInputChange}
                                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                                    placeholder="Type a message..."
+                                    placeholder={placeholderQuestions[placeholderIndex]}
+                                    style={{
+                                        transition: "all 0.3s ease-in-out",
+                                    }}
                                 />
                                 <button onClick={sendMessage}>Send</button>
                             </div>
