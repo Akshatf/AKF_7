@@ -171,17 +171,14 @@ const Chatbot = () => {
         setMessages([{ type: 'bot', text: 'Hi! Ask me anything about Akshat.' }]);
     };
 
-    const navigateToDocumentation = () => {
-        window.open('https://your-documentation-link.com', '_blank');
-    };
-
     const DocumentationBox = styled.div`
         position: fixed;
-        bottom: 110px;
-        right: 30px;
-        width: 350px;
+        bottom: 150px;
+        // right: 830px;
+        margin:auto;
+        width: 300px;
         color:black;
-        height: 400px;
+        height: 300px;
         border: 1px solid #ccc;
         background-color: #f9f9f9;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -191,6 +188,7 @@ const Chatbot = () => {
         border-radius: 8px;
         z-index: 20;
     `;
+
     const BotButton = styled.button`
         position: fixed;
         bottom: 30px;
@@ -216,26 +214,49 @@ const Chatbot = () => {
     `;
 
     const documentationContent = `
-    **Chatbot Functionalities and Guide**
-    
-    ---
-    
-    ### Introduction
-    This document provides an overview of the chatbot developed by Akshat Farkya, outlining its features, the technology used, and guidance for users to make the most of its functionalities.
-    
-    ### Key Features
-    - **Personal Information Retrieval**: Ask about Akshat’s age, inspirations, hobbies, or favorite music.
-    - **Educational Background**: Retrieve detailed academic history.
-    - **Professional Aspirations**: Discover Akshat’s career objectives, short-term goals, and long-term ambitions.
-    - **Projects and Achievements**: Learn about Akshat’s personal projects and professional accomplishments.
-    - **Contact Information**: Get Akshat’s professional contact details.
-    - **Training and Skills**: Explore Akshat’s technical skills and training certifications.
-    - **Extracurricular Activities**: Gain insights into Akshat’s extracurricular engagements and strengths.
-    - **Personal Preferences**: Learn about Akshat’s favorite places, foods, and hobbies.
-    
-    ---
-    
-    This chatbot is a reflection of Akshat’s dedication to combining technical expertise with user-focused design.
+Chatbot Functionalities and Guide
+
+---
+
+Introduction
+This document provides an overview of the chatbot developed by Akshat Farkya, outlining its features, the technology used, and guidance for users to make the most of its functionalities.
+
+Key Features
+The chatbot is designed to provide personalized and professional interactions, offering detailed insights about Akshat's professional and personal background. 
+
+ How to Use the Chatbot
+
+1. Initiate a Conversation: Start by saying “Hi” or “Hello” to engage with the chatbot.
+2. Ask Direct Questions: The chatbot can handle direct questions based on predefined intents.
+   - Example: “What are Akshat’s hobbies?”
+3. Follow-Up Queries: You can ask detailed follow-ups, like “Tell me more about GestureSpeak.”
+4. Feedback: End the conversation with feedback about your experience.
+
+ How It Was Made
+- Framework: The chatbot is built using Dialogflow for natural language processing.
+- Frontend: Integrated with a React.js-based portfolio.
+- Backend: Developed using Node.js, hosted on Render.
+- APIs Used: Google Dialogflow APIs for handling intents and responses.
+- Data Management: Utilizes structured JSON data to store dynamic user queries and responses.
+
+
+ Common Queries
+- Personal Details: “Who is Akshat?”
+- Educational Information: “Where did Akshat study?”
+- Professional Projects: “What projects has Akshat worked on?”
+- Technical Skills: “What technologies does Akshat know?”
+- Contact Information: “How can I contact Akshat?”
+
+ Future Enhancements
+-*Real-Time Personalization: Adding timezone-based greetings.
+-*Extended Dataset: Including more professional details and real-time portfolio updates.
+- Multilingual Support: Expanding capabilities to interact in multiple languages.
+
+---
+
+This chatbot is a reflection of Akshat’s dedication to combining technical expertise with user-focused design. Engage with it to explore more about Akshat’s journey and aspirations!
+
+
     `;
 
     return (
@@ -268,10 +289,10 @@ const Chatbot = () => {
                     <div className="chatbot-container">
                         <div className="chatbox">
                             <div className="chatbox-header">
-                                🐼 Akshat's Virtual Assistant
-                                <button onClick={() => setDocumentationOpen(true)}>📄</button>
-                                <button onClick={resetChat} className="refresh-chatbot-btn">🔄</button>
-                                <button onClick={() => setChatbotOpen(false)} className="close-chatbot-btn">❌</button>
+                                🐼Akf's Virtual Assistant
+                                <button title="Documentation" onClick={() => setDocumentationOpen(true)}>📄</button>
+                                <button title="Reset Chat" onClick={resetChat} className="refresh-chatbot-btn" >🔄</button>
+                                <button title="Close Chat" onClick={() => setChatbotOpen(false)} className="close-chatbot-btn">❌</button>
                             </div>
                             <div className="messages">
                                 {messages.map((message, index) => (

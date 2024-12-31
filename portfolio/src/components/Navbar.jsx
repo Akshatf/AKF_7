@@ -161,7 +161,7 @@ const Navbar = () => {
       <NavbarContainer>
         {/* NavLogo with image */}
         <NavLogo to="/">
-          <img src={require('../images/logo.png')} alt="logo" />
+          <img src={require("../images/logo.png")} alt="logo" />
           {windowWidth <= 768 ? "" : ""}
         </NavLogo>
 
@@ -190,29 +190,24 @@ const Navbar = () => {
             <NavLink onClick={() => setIsOpen(!isOpen)} to="/projects">
               Work
             </NavLink>
-            <GithubButton
+            <NavLink
+              as="a"
               href={Bio.resume}
-              target="_Blank"
-              // style={{
-              //   background: theme.primary,
-              //   color: theme.text_primary,
-              // }}
+              target="_blank"
+              onClick={() => setIsOpen(!isOpen)}
             >
               Resume
-            </GithubButton>
-            <GithubButton
+            </NavLink>
+            <NavLink
+              as="a"
               href={Bio.github}
-              target="_Blank"
-              // style={{
-              //   background: theme.primary,
-              //   color: theme.text_primary,
-              // }}
+              target="_blank"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              Github
-            </GithubButton>
+              GitHub
+            </NavLink>
           </MobileMenu>
         )}
-
         <ButtonContainer>
           <GithubButton href={Bio.resume} target="_Blank">
             Check Resume
