@@ -5,42 +5,43 @@ import styled from "styled-components";
 const Chatbot = () => {
     const [messages, setMessages] = useState([
         { type: 'bot', text: 'Hi! Ask me anything about Akshat.' },
-        { type: 'bot', text: 'Ask me about Akshat, his qualification, and much more!' }
+        { type: 'bot', text: 'Ask me about Akshat, his qualification, and much more!' },
+        { type: 'bot', text: 'Please share your valuable feedback at the end of the conversation.' }
     ]);
     const [input, setInput] = useState('');
     const [editing, setEditing] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [loadingMessages] = useState(['Fetching data...', 'Analyzing...', 'Generating response...']);
+    const [currentLoadingIndex, setCurrentLoadingIndex] = useState(0);
     const [chatbotOpen, setChatbotOpen] = useState(false);
     const [botResponding, setBotResponding] = useState(false);
     const messagesEndRef = useRef(null);
     const [showFirstMessage, setShowFirstMessage] = useState(false);
     const [showSecondMessage, setShowSecondMessage] = useState(false);
-    const [hideMessages, setHideMessages] = useState(false);  // This controls message visibility
+    const [hideMessages, setHideMessages] = useState(false);
 
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
     useEffect(() => {
         resetMessagesEffect();
-    }, []);  // Empty dependency array to trigger on every component mount
+    }, []);
+
     const resetMessagesEffect = () => {
-        // Reset message states before showing again
         setShowFirstMessage(false);
         setShowSecondMessage(false);
         setHideMessages(false);
 
-        // Show the first message after 1 second
         const firstMessageTimer = setTimeout(() => {
             setShowFirstMessage(true);
         }, 1000);
 
-        // Show the second message 3 seconds after the first one
         const secondMessageTimer = setTimeout(() => {
             setShowSecondMessage(true);
         }, 3000);
 
-        // Hide both messages after 10 seconds
         const hideMessagesTimer = setTimeout(() => {
             setHideMessages(true);
         }, 6500);
@@ -51,7 +52,6 @@ const Chatbot = () => {
             clearTimeout(hideMessagesTimer);
         };
     };
- 
 
     const handleInputChange = (e) => setInput(e.target.value);
 
@@ -70,6 +70,11 @@ const Chatbot = () => {
         setMessages(newMessages);
         setInput('');
         setLoading(true);
+        setCurrentLoadingIndex(0);
+
+        const loadingInterval = setInterval(() => {
+            setCurrentLoadingIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length);
+        }, 1500);
 
         try {
             const response = await fetch('https://akf-7.onrender.com/send-msg', {
@@ -78,60 +83,62 @@ const Chatbot = () => {
                 body: new URLSearchParams({ MSG: input }),
             });
 
+            clearInterval(loadingInterval);
+
             const data = await response.json();
             const botResponse = data.Reply || "Sorry, I didn't understand that.";
 
             setLoading(false);
             typeWriterEffect(botResponse);
         } catch (error) {
-            setMessages(prevMessages => [
+            clearInterval(loadingInterval);
+            setMessages((prevMessages) => [
                 ...prevMessages,
-                { type: 'bot', text: 'Error: Unable to connect to the server, Please refresh or try again later.' },
+                { type: 'bot', text: 'Error: Unable to connect to the server. Please refresh or try again later.' },
             ]);
             setLoading(false);
         }
     };
+
     const typeWriterEffect = (text) => {
         let index = 0;
         const newBotMessage = { type: 'bot', text: '', partial: true };
-    
+
         setMessages((prevMessages) => [...prevMessages, newBotMessage]);
-    
+
         setBotResponding(true);
-    
+
         const interval = setInterval(() => {
             index++;
             setMessages((prevMessages) => {
                 const updatedMessages = [...prevMessages];
                 const lastMessageIndex = updatedMessages.length - 1;
-    
+
                 if (lastMessageIndex >= 0 && updatedMessages[lastMessageIndex].partial) {
-                   
                     updatedMessages[lastMessageIndex].text = text.slice(0, index);
                 }
-    
+
                 return updatedMessages;
             });
-    
+
             if (index === text.length) {
                 clearInterval(interval);
-    
+
                 setMessages((prevMessages) => {
                     const updatedMessages = [...prevMessages];
                     const lastMessageIndex = updatedMessages.length - 1;
-    
+
                     if (lastMessageIndex >= 0 && updatedMessages[lastMessageIndex].partial) {
-                      
                         updatedMessages[lastMessageIndex].partial = false;
                     }
-    
+
                     return updatedMessages;
                 });
-    
+
                 setBotResponding(false);
                 scrollToBottom();
             }
-        }, 50); 
+        }, 50);
     };
 
     const editMessage = (index) => {
@@ -139,14 +146,12 @@ const Chatbot = () => {
         setEditIndex(index);
         setInput(messages[index].text);
 
-        // Remove the bot response for the edited user query
         setMessages((prevMessages) => {
             const updatedMessages = [...prevMessages];
             const nextMessageIndex = index + 1;
 
-            // Check if the next message exists and is a bot response
             if (updatedMessages[nextMessageIndex] && updatedMessages[nextMessageIndex].type === 'bot') {
-                updatedMessages.splice(nextMessageIndex, 1); // Remove the bot response
+                updatedMessages.splice(nextMessageIndex, 1);
             }
 
             return updatedMessages;
@@ -198,12 +203,12 @@ const Chatbot = () => {
                             <div className="chatbot-messages">
                                 {showFirstMessage && (
                                     <div className="chatbot-message chatbot-message-first">
-                                        <p>Need help? Want to know Akshat</p>
+                                        <p>Need help? Want to know Akshat?</p>
                                     </div>
                                 )}
                                 {showSecondMessage && (
                                     <div className="chatbot-message chatbot-message-second">
-                                        <p>I'm here to assist you !</p>
+                                        <p>I'm here to assist you!</p>
                                     </div>
                                 )}
                             </div>
@@ -232,7 +237,7 @@ const Chatbot = () => {
                                         {message.text}
                                     </div>
                                 ))}
-                                {loading && <div className="message bot">Fetching data...</div>}
+                                {loading && <div className="message bot">{loadingMessages[currentLoadingIndex]}</div>}
                                 <div ref={messagesEndRef}></div>
                             </div>
                             <div className="input-container">
