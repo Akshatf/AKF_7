@@ -71,11 +71,11 @@ export const skills = [
         image:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1767px-Jupyter_logo.svg.png",
       },
-      {
-        name: "Google Colab",
-        image:
-          "https://assets.stickpng.com/images/63c2e4c9c4baad4ce22bf9ef.png",
-      },
+      // {
+      //   name: "Google Colab",
+      //   image:
+      //     "https://assets.stickpng.com/images/63c2e4c9c4baad4ce22bf9ef.png",
+      // },
     ],
   },
   {
@@ -94,6 +94,11 @@ export const skills = [
         name: "MySQL",
         image:
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+      },
+            {
+        name: "MongoDB",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
       },
     ],
   },
