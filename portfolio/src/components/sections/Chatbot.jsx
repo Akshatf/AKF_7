@@ -92,9 +92,9 @@ const Chatbot = () => {
         const loadingInterval = setInterval(() => {
             setCurrentLoadingIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length);
         }, 1500);
-        const loadingPlace = setInterval(() => {
-            setCurrentLoadingIndex((prevIndex) => (prevIndex + 1) % loadingPlace.length);
-        }, 1500);
+        // const loadingPlace = setInterval(() => {
+        //     setCurrentLoadingIndex((prevIndex) => (prevIndex + 1) % loadingPlace.length);
+        // }, 1500);
 
         try {
             const response = await fetch('https://akf-7.onrender.com/send-msg', {
@@ -103,9 +103,10 @@ const Chatbot = () => {
                 body: new URLSearchParams({ MSG: input }),
             });
 
+            const data = await response.json();
             clearInterval(loadingInterval);
 
-            const data = await response.json();
+
             const botResponse = data.Reply || "Sorry, I didn't understand that.";
 
             setLoading(false);
@@ -178,9 +179,9 @@ const Chatbot = () => {
         });
     };
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') sendMessage();
-    };
+    // const handleKeyPress = (e) => {
+    //     if (e.key === 'Enter') sendMessage();
+    // };
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
