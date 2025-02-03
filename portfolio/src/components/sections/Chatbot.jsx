@@ -197,40 +197,40 @@ const Chatbot = () => {
     }
   `;
 
-//   const CloseButton = styled.button`
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     background: transparent;
-//     border: none;
-//     font-size: 12px;
-//     cursor: pointer;
-//     padding: 2px;
-//     margin: 2px;
-//     z-index: 1;
-//   `;|
+  //   const CloseButton = styled.button`
+  //     position: absolute;
+  //     top: 0;
+  //     right: 0;
+  //     background: transparent;
+  //     border: none;
+  //     font-size: 12px;
+  //     cursor: pointer;
+  //     padding: 2px;
+  //     margin: 2px;
+  //     z-index: 1;
+  //   `;|
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: -10px; 
-  right: -10px; 
-  background: white;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  font-size: 12px;
-  cursor: pointer;
-  padding: 5px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
-  z-index: 1;
-  &:hover {
-    background: #f0f0f0; 
-  }
-`;
+  const CloseButton = styled.button`
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    // background: #854CEC;
+    // border: 2px solid #ccc;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 5px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    &:hover {
+      background: #f0f0f0;
+    }
+  `;
 
   return (
     <>

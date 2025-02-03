@@ -162,8 +162,8 @@ export const education = [
     img: "https://www.logolynx.com/images/logolynx/s_60/60925e7c8c18790d92e34d63eba6e494.png",
     school: "Acropolis Institute Of Technology And Research, Indore (M.P)",
     date: "Oct 2021 - July 2025",
-    grade: "7.83 CGPA",
-    desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering with specialization in Data Science at Acropolis Institute Of Technology And Research , Indore . I have completed 6 semesters and have a CGPA of 7.83. I have taken courses in Data Structures Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks, among others.",
+    grade: "7.93 CGPA",
+    desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering with specialization in Data Science at Acropolis Institute Of Technology And Research, Indore . I have completed 7 semesters and have a CGPA of 7.93.",
     degree: "Bachelor of Technology - BTech, Computer Science and Engineering",
   },
   {
