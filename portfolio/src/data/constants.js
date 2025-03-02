@@ -1,6 +1,11 @@
 import pp from "../images/pp.png"
 import e from "../images/e.png"
 import gs from "../images/gs.png"
+import cb from "../images/cb.png"
+import u from "../images/u.png"
+import pg from "../images/pg.png"
+import game from "../images/game.png"
+
 import tailwind from "../images/tailwind.png"
 export const Bio = {
   name: "Akshat Farkya",
@@ -226,33 +231,43 @@ export const projects = [
     description:
       `Designed and developed an interactive chatbot, providing personalized user engagement, Implemented features to greet users, collect user input like names, offer compliments, and provide assistance related to portfolio details, Deployed the chatbot on the portfolio website to ensure server-side functionality and seamless integration. `,
     image:
-      "",
+      cb,
     tags: ["Dialogflow", "React", "Node"],
     category: "machine learning",
     github: "",
     webapp: "",
   },
   {
-    id: 10,
-    title: "Flate&Mate",
-    date: "Currently working on it",
+    id: 6,
+    title: "Weather App",
+    date: "2024",
     description:
-      "A Flat&Mate Finding WebApp made with React Users can search for any flat or flatmate . ( Working on it )",
-    image:
-      "",
-    tags: ["ReactJS", "Tailwind", "MongoDB"],
+      // `Weather App that will tell you about your location's weather with windspeed cloudiness and humidity with temp and also after your input the bg image will change dynamically accordingly to your location's history or famous place`,
+      // A dynamic and intelligent weather app that provides real-time weather insights—including temperature, wind speed, cloudiness, and humidity—while seamlessly adapting its background to showcase iconic landmarks based on your location.
+      `A dynamic weather app that displays real-time weather details (temperature, wind speed, cloudiness, humidity) and updates the background image based on your location's famous places.`,
+    image: u,
+    tags: [
+      "Javascript",
+      "HTML",
+      "CSS",
+    ],
     category: "web app",
     github: "",
     webapp: "",
   },
   {
-    id: 4,
-    title: "E-Procurement System",
-    date: "2023",
+    id: 7,
+    title: "Password Generator",
+    date: "2024",
     description:
-      `Automated Tender Analysis: Designed to streamline procurement processes, the system intelligently analyzes tenders, significantly reducing time and effort.`,
-    image:e,
-    tags: ["HTML","JavaScript", "CSS", "SQL"],
+      // `A password generator that generates password according to your prefrence like what you want to add in your password [Uppercase, Lowercase, Special Symbols, Numbers ] and shoe the strength of password with a indicator`,
+      `A robust and dynamic password generator that crafts secure passwords tailored to your preferences, integrating uppercase, lowercase, symbols, and numbers, with a real-time strength indicator.`,
+    image: pg,
+    tags: [
+      "Javascript",
+      "HTML",
+      "CSS",
+    ],
     category: "web app",
     github: "",
     webapp: "",
@@ -266,6 +281,47 @@ export const projects = [
     image:
       "",
     tags: ["React Js",  "Node JS"],
+    category: "web app",
+    github: "",
+    webapp: "",
+  },
+  {
+    id: 7,
+    title: "Tic Tac Toe",
+    date: "2024",
+    description:
+      `Tic Tac Toe game`,
+    image: game,
+    tags: [
+      "Javascript",
+      "HTML",
+      "CSS",
+    ],
+    category: "web app",
+    github: "",
+    webapp: "",
+  },
+  {
+    id: 9,
+    title: "E-Procurement System",
+    date: "2023",
+    description:
+      `Automated Tender Analysis: Designed to streamline procurement processes, the system intelligently analyzes tenders, significantly reducing time and effort.`,
+    image:e,
+    tags: ["HTML","JavaScript", "CSS", "SQL"],
+    category: "web app",
+    github: "",
+    webapp: "",
+  },
+  {
+    id: 10,
+    title: "Flate&Mate",
+    date: "Currently working on it",
+    description:
+      "A Flat&Mate Finding WebApp made with React Users can search for any flat or flatmate . ( Working on it )",
+    image:
+      "",
+    tags: ["ReactJS", "Tailwind", "MongoDB"],
     category: "web app",
     github: "",
     webapp: "",
