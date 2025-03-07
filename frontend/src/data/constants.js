@@ -1,8 +1,9 @@
-import pp from "../images/pp.png"
+import pp2 from "../images/pp2.png"
 import e from "../images/e.png"
 import gs from "../images/gs.png"
 import cb from "../images/cb.png"
 import u from "../images/u.png"
+import d from "../images/d.png"
 import pg from "../images/pg.png"
 import game from "../images/game.png"
 
@@ -21,6 +22,7 @@ export const Bio = {
     "https://drive.google.com/file/d/1b6M7T1OO64AEbddpcWiglVlggMjq7vAU/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/akshat-farkya-b92294219/",
   twitter: "https://twitter.com/akshtf",
+  leetcode: "https://leetcode.com/u/akshttt/",
   insta: "https://www.instagram.com/_.akshatf/",
 };
 
@@ -200,7 +202,7 @@ export const projects = [
     description:
       // "This portfolio website serves as a showcase of my professional journey, technical expertise, and personal projects. It is designed to provide visitors with a comprehensive overview of my skills.",
       `Dynamic portfolio using React, Tailwind for a visually engaging interface, Integrated Web3Forms API to facilitate seamless communication and added a personalized chatbot using Google Dialogflow API  Effectively showcased resume, GitHub profile, and project portfolio in an intuitive, user-friendly layout.`,
-    image: pp,
+    image: pp2,
     tags: [
       "React Js",
       "Web3Forms",
@@ -208,7 +210,7 @@ export const projects = [
       "Dialogflow",
     ],
     category: "web app",
-    github: "",
+    github: "https://github.com/Akshatf/AKF_7",
     webapp: "https://akf-7.vercel.app/",
   },
   {
@@ -221,7 +223,7 @@ export const projects = [
     image:gs,
     tags: ["Python", "React", "TensorFlow", "OpenCV"],
     category: "machine learning",
-    github: "",
+    github: "https://github.com/Akshatf/GestureSpeak",
     webapp: "",
   },
    {
@@ -234,11 +236,11 @@ export const projects = [
       cb,
     tags: ["Dialogflow", "React", "Node"],
     category: "machine learning",
-    github: "",
-    webapp: "",
+    github: "https://github.com/Akshatf/chatbot",
+    webapp: "https://akshat-chatbot.netlify.app/",
   },
   {
-    id: 6,
+    id: 4,
     title: "Weather App",
     date: "2024",
     description:
@@ -252,11 +254,11 @@ export const projects = [
       "CSS",
     ],
     category: "web app",
-    github: "",
-    webapp: "",
+    github: "https://github.com/Akshatf/Weather_app",
+    webapp: "https://weather-app-delta-flame-79.vercel.app/",
   },
   {
-    id: 7,
+    id: 5,
     title: "Password Generator",
     date: "2024",
     description:
@@ -269,11 +271,11 @@ export const projects = [
       "CSS",
     ],
     category: "web app",
-    github: "",
-    webapp: "",
+    github: "https://github.com/Akshatf/Password_Generator",
+    webapp: "https://coruscating-sopapillas-d9a485.netlify.app/",
   },
   {
-    id: 5,
+    id: 6,
     title: "Todo Web App",
     date: "2023",
     description:
@@ -298,11 +300,43 @@ export const projects = [
       "CSS",
     ],
     category: "web app",
-    github: "",
-    webapp: "",
+    github: "https://github.com/Akshatf/Tic-Tac-Toe",
+    webapp: "https://strong-dusk-8567f6.netlify.app/",
+  },
+  {
+    id: 8,
+    title: "QR Code Generator",
+    date: "2024",
+    description:
+      ``,
+    image: pg,
+    tags: [
+      "Javascript",
+      "HTML",
+      "CSS",
+    ],
+    category: "web app",
+    github: "https://github.com/Akshatf/QR_Code_Generator",
+    webapp: "https://deft-froyo-672883.netlify.app/",
   },
   {
     id: 9,
+    title: "Calculator",
+    date: "2024",
+    description:
+      ``,
+    image: pg,
+    tags: [
+      "Javascript",
+      "HTML",
+      "CSS",
+    ],
+    category: "web app",
+    github: "https://github.com/Akshatf/Basic-Calculator",
+    webapp: "https://splendorous-dieffenbachia-128661.netlify.app/",
+  },
+  {
+    id: 10,
     title: "E-Procurement System",
     date: "2023",
     description:
@@ -314,7 +348,7 @@ export const projects = [
     webapp: "",
   },
   {
-    id: 10,
+    id: 11,
     title: "Flate&Mate",
     date: "Currently working on it",
     description:
@@ -327,65 +361,3 @@ export const projects = [
     webapp: "",
   },
 ];
-
-export const data = {
-  name: "Akshat Farkya",
-  specialization: ["Frontend Development", "Data Science", "Aiming to be a full stack developer"],
-  hobbies: ["Coding", "Reading", "Hiking", "Sports","Travelling"],
-  contact: "akshatfarkya07@gmail.com",
-  education: "PM Shri Kendriya Vidyalaya Mandsaur and currently pursuing Bachelor's in computer science with specialization in Data science from Acropolis Institute Of Technology And Research Indore ",
-  experience: "at Interkasha",
-  instagram: "_.akshatf",
-  snapchat: "akshatf",
-  linkedin: "https://www.linkedin.com/in/akshat-farkya-b92294219/",
-  github: "akshatf",
-  leetcode: "",
-  twitter: "akshtf",
-  x: "akshtf",
-  from: "Mandsaur the city of Lord 'Pahupatinath'",
-  food: "Indian, Italian and Chinese",
-  place: "Mountains",
-  peace: "alone time",
-  wgame: "cricket and football",
-  pgame: "football and kho kho",
-  agame: "state player in football and district player in kho kho",
-  lgoal: "become financially independent",
-  sgoal: "have a good position in a big MNC",
-  age: "21 running",
-  inspiration: "TED KUNCHOK and HARSHA SAI, you can know both of them by asking specifically",
-  ted: "Tibetan YouTuber, you can see him on YouTube. He is so kind, humble, and generous.",
-  harsha: "YouTuber, you can visit his channel on YouTube.",
-  freetime: "Sleep",
-  music: "Soft songs",
-  typeofmusic: "Hindi, English, Punjabi; you can get my Spotify playlist by typing 'spotify'",
-  spotify: "playlist link",
-  singer: "Taylor Swift and Arijit Singh",
-  gender: "Male",
-  headache: "Khushboo Gupta",
-  careerObjective: "Highly motivated CS undergrad with expertise in HTML, CSS, and design, seeking innovative solutions that merge technical precision with artistic vision. Dedicated to ongoing learning and delivering creative, impactful projects.",
-  academicRecord: {
-      professional: "Pursuing Bachelor of Technology (B. Tech) in Computer Science with Data Science (2021-2025) from Acropolis Institute of Technology & Research, Indore, affiliated to RGPV with Current CGPA – 7.83.",
-      educational: "Senior Secondary School Certificate (10+2) from PM Shri Kendriya Vidyalaya, Mandsaur (M.P) with 79.8% in 2021. High School Certificate (10th) from PM Shri Kendriya Vidyalaya, Mandsaur (M.P) with 74% in 2019."
-  },
-  technicalSkills: "CPP, HTML, CSS, JS, MySQL.",
-  trainings: "AR/VR Training: IT Department 2024, AITR (15 days). Python for Data Science: IT Department (DS) 2023, AITR (1 month). Data Analytical Workshop: Techotsav 2023, AITR (6 days).",
-  personalProjects: "GestureSpeak: Web-based sign language recognition platform enabling real-time detection & translation into text. Leveraging Python TensorFlow, it enhances accessibility & communication for users with hearing impairments. Bridging the communication gap with a user-friendly, accurate, & efficient tool. E-Procurement System: A system for analyzing best suitable tender among all and reduce the cost and precious time of particular individual or government. Technology Used: HTML, CSS, JS. Calculator: Designed and implemented calculator with HTML, CSS, and JS, showcasing strong development skills with emphasis on usability and code organization. The calculator is designed to perform arithmetic operations and expressions.",
-  achievements: "> Participated in Hack’Ndore organized by IMC. > Winner team in District football Competition. > Cleared internal round of Smart India Hackathon 2023 with team.",
-  extracurricular: "> BSG Candidate, > Sports enthusiast, > Active event volunteer.",
-  strengths: "Adaptable, > Time management.",
-  improvementAreas: "Interpersonal skills.",
-  personalDetails: {
-      dateOfBirth: "07/04/2003",
-      gender: "Male",
-      nationality: "Indian",
-      maritalStatus: "Unmarried",
-      languagesKnown: "Hindi, English",
-      motherTongue: "Hindi",
-      fatherName: "Mr. Manish Farkya",
-      passport: "Applied for"
-  },
-  address: {
-      permanent: "51, Opp. Rest house, Pipliya Mandi, Mandsaur, M.P.",
-      temporary: "720, Narendra Tiwari marg, Sudama Nagar, Indore."
-  }
-};

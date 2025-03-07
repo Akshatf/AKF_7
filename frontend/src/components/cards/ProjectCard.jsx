@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { FaGithub } from "react-icons/fa";
+
 const Card = styled.div`
   width: 330px;
   height: 490px;
@@ -33,7 +35,7 @@ const Tags = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 4px;
-`; 
+`;
 const Tag = styled.div`
   font-size: 12px;
   font-weight: 400;
@@ -41,7 +43,7 @@ const Tag = styled.div`
   background-color: rgba(133, 76, 230, 0.082);
   padding: 2px 8px;
   border-radius: 10px;
-  `;
+`;
 const Details = styled.div`
   width: 100%;
   display: flex;
@@ -86,6 +88,14 @@ const Members = styled.div`
   align-items: center;
   padding-left: 10px;
 `;
+const ButtonContainer = styled.a`
+  display: flex;
+  // flex-direction: row;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+`;
 const Avatar = styled.img`
   width: 38px;
   height: 38px;
@@ -100,6 +110,7 @@ const Button = styled.a`
   text-decoration: none;
   font-weight: 600;
   text-align: center;
+  // gap:20px;
 `;
 
 const ProjectCard = ({ project }) => {
@@ -116,14 +127,19 @@ const ProjectCard = ({ project }) => {
         <Date>{project.date}</Date>
         <Description>{project.description}</Description>
       </Details>
-      <Members>
+      {/* <Members>
         {project.member?.map((member) => (
           <Avatar src={member.img} />
         ))}
-      </Members>
-      <Button href={project.github} target="_blank">
-        View Code
-      </Button>
+      </Members> */}
+      <ButtonContainer>
+        <Button href={project.github} target="_blank">
+          Github <FaGithub />
+        </Button>
+        <Button href={project.webapp} target="_blank">
+          Live🚀
+        </Button>
+      </ButtonContainer>
     </Card>
   );
 };
