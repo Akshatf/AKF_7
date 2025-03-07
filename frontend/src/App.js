@@ -15,6 +15,7 @@ import Chatbot from "./components/sections/Chatbot";
 // import Preloader from "./components/sections/Preloader";
 // import { Loader } from "@react-three/drei";
 import Loader from "./components/sections/Loader";
+import { Analytics } from "@vercel/analytics/react"; 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
@@ -99,6 +100,7 @@ function App() {
                 {/* <Route path="/education" element={<Education />} /> */}
                 {/* <Route path="/chatbot" element={<Chatbot />} /> */}
               </Routes>
+              <Analytics />
             </>
         </Body>
       </Router>

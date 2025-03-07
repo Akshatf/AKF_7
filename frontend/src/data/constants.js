@@ -6,6 +6,9 @@ import u from "../images/u.png"
 import d from "../images/d.png"
 import pg from "../images/pg.png"
 import game from "../images/game.png"
+import qr from "../images/qr.png"
+import tictac from "../images/tictac.png"
+import calcu from "../images/calcu.png"
 
 import tailwind from "../images/tailwind.png"
 export const Bio = {
@@ -293,7 +296,7 @@ export const projects = [
     date: "2024",
     description:
       `Tic Tac Toe game`,
-    image: game,
+    image: tictac,
     tags: [
       "Javascript",
       "HTML",
@@ -309,7 +312,7 @@ export const projects = [
     date: "2024",
     description:
       ``,
-    image: pg,
+    image: qr,
     tags: [
       "Javascript",
       "HTML",
@@ -325,7 +328,7 @@ export const projects = [
     date: "2024",
     description:
       ``,
-    image: pg,
+    image: calcu,
     tags: [
       "Javascript",
       "HTML",
