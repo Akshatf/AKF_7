@@ -90,7 +90,7 @@ function App() {
                   element={
                     <>
                       <Projects />
-                      <Experience />
+                      {/* <Experience /> */}
                       <Footer/>
                       <Chatbot/>
                     </>

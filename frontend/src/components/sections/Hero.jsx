@@ -11,7 +11,7 @@ import {
   headContentAnimation,
   headTextAnimation,
 } from "../../utils/motion";
-// import StarCanvas from "../canvas/Stars";
+
 
 
 const HeroContainer = styled.div`
@@ -235,14 +235,8 @@ const Hero = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 960);
     };
-
-    // Check on initial render
     handleResize();
-
-    // Add event listener to detect window resize
     window.addEventListener("resize", handleResize);
-
-    // Clean up event listener
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 

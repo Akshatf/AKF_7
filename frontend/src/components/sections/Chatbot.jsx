@@ -319,6 +319,9 @@ const Chatbot = () => {
                   placeholder={placeholderQuestions[placeholderIndex]}
                 />
                 <button onClick={sendMessage}>Send</button>
+                <p className="chatbot-disclaimer">
+                  Chatbot may make mistakes. Please do verify
+                </p>
               </div>
             </div>
           </div>

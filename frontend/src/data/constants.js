@@ -5,7 +5,7 @@ import cb from "../images/cb.png"
 import u from "../images/u.png"
 import d from "../images/d.png"
 import pg from "../images/pg.png"
-import game from "../images/game.png"
+// import game from "../images/game.png"
 import qr from "../images/qr.png"
 import tictac from "../images/tictac.png"
 import calcu from "../images/calcu.png"
@@ -19,7 +19,8 @@ export const Bio = {
     "Programmer",
   ],
   description:
-    "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
+    // "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
+    "I am a curious and ambitious individual, always eager to learn and take on new challenges. With a growth mindset and a commitment to excellence, I strive to deliver high-quality solutions. My positive attitude and adaptability help me make a meaningful impact and achieve excellence in everything I do.",
   github: "https://github.com/akshatf",
   resume:
     "https://drive.google.com/file/d/1b6M7T1OO64AEbddpcWiglVlggMjq7vAU/view?usp=sharing",

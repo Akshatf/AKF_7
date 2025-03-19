@@ -4,7 +4,7 @@ import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
 import { MenuRounded, Close } from "@mui/icons-material";
 
-// Styled components for Navbar
+
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
   height: 80px;
