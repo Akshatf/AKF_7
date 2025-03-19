@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Chatbot.css";
 import styled from "styled-components";
+import { toast, ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -172,7 +174,21 @@ const Chatbot = () => {
   const dismissMessage = (key) => {
     setShowMessages((prev) => ({ ...prev, [key]: false }));
   };
-
+  const handleChatbotOpen = () => {
+    setChatbotOpen(true);
+    toast('⚠️Chatbot can make mistakes, Do verify!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+  
   const BotButton = styled.button`
     position: fixed;
     bottom: 30px;
@@ -261,10 +277,9 @@ const Chatbot = () => {
                 </div>
               )}
             </div>
-            <BotButton onClick={() => setChatbotOpen(true)}>🐼</BotButton>
+            <BotButton onClick={handleChatbotOpen}>🐼</BotButton>
           </>
         )}
-
         {chatbotOpen && (
           <div className="chatbot-container">
             <div className="chatbox">
@@ -319,14 +334,12 @@ const Chatbot = () => {
                   placeholder={placeholderQuestions[placeholderIndex]}
                 />
                 <button onClick={sendMessage}>Send</button>
-                <p className="chatbot-disclaimer">
-                  Chatbot may make mistakes. Please do verify
-                </p>
               </div>
             </div>
           </div>
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

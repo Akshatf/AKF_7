@@ -310,9 +310,6 @@
       transform: scale(1);
   }
 }
-.chatbot-disclaimer {
-  font-size: 12px;
-  color: gray;
-  margin-inline: auto;
-  margin-top: 5px;
+.custom-progress-bar {
+  background-color: red !important;
 }

@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 import styled from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   display: flex;
@@ -142,26 +144,29 @@ const Contact = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState("");
   const [verified, setVerified] = useState(false);
+  const [formStatus, setFormStatus] = useState(null); 
 
   const apiKey =
     process.env.PUBLIC_ACCESS_KEY || "9bdcf539-ff5e-460e-a4a4-8ac19879d533";
 
-  const { submit: onSubmit } = useWeb3Forms({
-    access_key: apiKey,
-    settings: {
-      from_name: "Akshat's Portfolio",
-      subject: "New Responce",
-    },
-    onSuccess: (msg) => {
-      setIsSuccess(true);
-      setMessage(msg);
-      reset();
-    },
-    onError: (msg) => {
-      setIsSuccess(false);
-      setMessage(msg);
-    },
-  });
+    const { submit: onSubmit } = useWeb3Forms({
+      access_key: apiKey,
+      settings: {
+        from_name: "Akshat's Portfolio",
+        subject: "New Response",
+      },
+      onSuccess: (msg) => {
+        toast.success("Message sent successfully!", {
+          position: "top-center",
+        });
+        setFormStatus({ success: true, message: msg });
+        reset();
+      },
+      onError: (msg) => {
+        toast.error("❌ Something went wrong!", { position: "top-center" });
+        setFormStatus({ success: false, message: msg });
+      },
+    });
 
   const handleCaptchaChange = (value) => {
     setVerified(!!value);
@@ -187,7 +192,7 @@ const Contact = () => {
           <ContactInput
             placeholder="Your Name"
             {...register("name", {
-              required: "Full name is required",
+              required: "⚠️Enter your name",
               maxLength: 80,
             })}
             className={errors.name ? "error" : ""}
@@ -197,10 +202,10 @@ const Contact = () => {
           <ContactInput
             placeholder="Your Email"
             {...register("email", {
-              required: "Enter your email",
+              required: "⚠️Enter your email",
               pattern: {
                 value: /^\S+@\S+$/i,
-                message: "Please enter a valid email",
+                message: "⚠️Please enter a valid email",
               },
             })}
             className={errors.email ? "error" : ""}
@@ -209,10 +214,10 @@ const Contact = () => {
           <ContactInput
             placeholder="Your Phone Number"
             {...register("phone", {
-              required: "Enter your phone number",
+              required: "⚠️Enter your phone number",
               pattern: {
                 value: /^\+?[1-9]\d{1,14}$/,
-                message: "Please enter a valid phone number",
+                message: "⚠️ Please enter a valid phone number",
               },
             })}
             className={errors.phone ? "error" : ""}
@@ -222,7 +227,7 @@ const Contact = () => {
           <ContactInput
             placeholder="Subject"
             {...register("subject", {
-              required: "Enter a subject",
+              required: "⚠️ Enter a subject",
             })}
             className={errors.subject ? "error" : ""}
           />
@@ -253,13 +258,6 @@ const Contact = () => {
             disabled={!verified || isSubmitting}
           />
         </ContactForm>
-
-        {isSubmitSuccessful && isSuccess && (
-          <Message>{message || "Message sent successfully!"}</Message>
-        )}
-        {isSubmitSuccessful && !isSuccess && (
-          <Message>{message || "Something went wrong!"}</Message>
-        )}
       </Wrapper>
     </Container>
   );
