@@ -1,9 +1,4 @@
-// sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-// mysitekey =6LdD2EwqAAAAAPlz_a8d_GtjGRIl5r4jkWEdYkip" site key
-// secretkey ="6LdD2EwqAAAAAKj84tR1_hTjvR1485voUbdMll-E"
-//web3 "2caa3035-88da-4425-92ce-b3131b5ed9ca"
-
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 import styled from "styled-components";
@@ -123,50 +118,53 @@ const ContactButton = styled.input`
   font-weight: 600;
   cursor: pointer;
 `;
+
 const Message = styled.p`
   font-size: 16px;
-  color: white; /* This sets the message color to white */
+  color: white;
   margin-top: 10px;
 `;
+
 const ErrorMessage = styled.p`
   font-size: 14px;
-  color: white; /* Set the font color to white */
+  color: white;
   margin-top: 5px;
 `;
+
 const Contact = () => {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm({ mode: "onTouched" });
 
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [message, setMessage] = useState("");
   const [verified, setVerified] = useState(false);
-  const [formStatus, setFormStatus] = useState(null); 
+  const [formStatus, setFormStatus] = useState(null);
 
-  const apiKey =
-    process.env.PUBLIC_ACCESS_KEY || "9bdcf539-ff5e-460e-a4a4-8ac19879d533";
+  // Your new reCAPTCHA site key
+  const RECAPTCHA_SITE_KEY = "6LfOK4krAAAAAOrs4ZSB-UL9-2XofAIUMZBNCOLk";
 
-    const { submit: onSubmit } = useWeb3Forms({
-      access_key: apiKey,
-      settings: {
-        from_name: "Akshat's Portfolio",
-        subject: "New Response",
-      },
-      onSuccess: (msg) => {
-        toast.success("Message sent successfully!", {
-          position: "top-center",
-        });
-        setFormStatus({ success: true, message: msg });
-        reset();
-      },
-      onError: (msg) => {
-        toast.error("❌ Something went wrong!", { position: "top-center" });
-        setFormStatus({ success: false, message: msg });
-      },
-    });
+  const apiKey = process.env.PUBLIC_ACCESS_KEY || "9bdcf539-ff5e-460e-a4a4-8ac19879d533";
+
+  const { submit: onSubmit } = useWeb3Forms({
+    access_key: apiKey,
+    settings: {
+      from_name: "Akshat's Portfolio",
+      subject: "New Response",
+    },
+    onSuccess: (msg) => {
+      toast.success("Message sent successfully!", {
+        position: "top-center",
+      });
+      setFormStatus({ success: true, message: msg });
+      reset();
+    },
+    onError: (msg) => {
+      toast.error("❌ Something went wrong!", { position: "top-center" });
+      setFormStatus({ success: false, message: msg });
+    },
+  });
 
   const handleCaptchaChange = (value) => {
     setVerified(!!value);
@@ -177,15 +175,14 @@ const Contact = () => {
       <Wrapper>
         <Title>Contact</Title>
         <Desc>
-          Feel free to reach out to me for any questions , opportunities or
-          collaborations !
+          Feel free to reach out to me for any questions, opportunities or
+          collaborations!
         </Desc>
         <Desc>
           You can Contact me via{" "}
           <a href="mailto:akshatfarkya07@gmail.com">Email</a> or fill the below
           form{" "}
         </Desc>
-        {/* <a href="https://wa.me/919425718644?text=Hey!%20I%20am%20Akshat.%20I%20would%20like%20to%20connect%20with%20you." target="_blank">Send a message on WhatsApp</a> */}
         <ContactForm onSubmit={handleSubmit(onSubmit)}>
           <ContactTitle>Email Me 🚀</ContactTitle>
 
@@ -211,6 +208,7 @@ const Contact = () => {
             className={errors.email ? "error" : ""}
           />
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+
           <ContactInput
             placeholder="Your Phone Number"
             {...register("phone", {
@@ -248,7 +246,7 @@ const Contact = () => {
           )}
 
           <ReCAPTCHA
-            sitekey="6LdD2EwqAAAAAPlz_a8d_GtjGRIl5r4jkWEdYkip"
+            sitekey={RECAPTCHA_SITE_KEY}
             onChange={handleCaptchaChange}
           />
 
