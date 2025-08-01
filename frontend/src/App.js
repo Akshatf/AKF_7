@@ -89,8 +89,8 @@ function App() {
                   path="/projects"
                   element={
                     <>
+                      <Experience />
                       <Projects />
-                      {/* <Experience /> */}
                       <Footer/>
                       <Chatbot/>
                     </>
