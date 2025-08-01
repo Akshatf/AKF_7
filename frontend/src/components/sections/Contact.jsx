@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 import styled from "styled-components";
-import ReCAPTCHA from "react-google-recaptcha";
+// import Turnstile from "@marsidev/react-turnstile";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -119,12 +120,6 @@ const ContactButton = styled.input`
   cursor: pointer;
 `;
 
-const Message = styled.p`
-  font-size: 16px;
-  color: white;
-  margin-top: 10px;
-`;
-
 const ErrorMessage = styled.p`
   font-size: 14px;
   color: white;
@@ -142,10 +137,8 @@ const Contact = () => {
   const [verified, setVerified] = useState(false);
   const [formStatus, setFormStatus] = useState(null);
 
-  // Your new reCAPTCHA site key
-  const RECAPTCHA_SITE_KEY = "6LfOK4krAAAAAOrs4ZSB-UL9-2XofAIUMZBNCOLk";
-
-  const apiKey = process.env.PUBLIC_ACCESS_KEY || "9bdcf539-ff5e-460e-a4a4-8ac19879d533";
+  const apiKey =
+    process.env.PUBLIC_ACCESS_KEY || "9bdcf539-ff5e-460e-a4a4-8ac19879d533";
 
   const { submit: onSubmit } = useWeb3Forms({
     access_key: apiKey,
@@ -159,16 +152,13 @@ const Contact = () => {
       });
       setFormStatus({ success: true, message: msg });
       reset();
+      setVerified(false); // Reset verification
     },
     onError: (msg) => {
       toast.error("❌ Something went wrong!", { position: "top-center" });
       setFormStatus({ success: false, message: msg });
     },
   });
-
-  const handleCaptchaChange = (value) => {
-    setVerified(!!value);
-  };
 
   return (
     <Container id="Contact">
@@ -207,7 +197,9 @@ const Contact = () => {
             })}
             className={errors.email ? "error" : ""}
           />
-          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+          {errors.email && (
+            <ErrorMessage>{errors.email.message}</ErrorMessage>
+          )}
 
           <ContactInput
             placeholder="Your Phone Number"
@@ -220,7 +212,9 @@ const Contact = () => {
             })}
             className={errors.phone ? "error" : ""}
           />
-          {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
+          {errors.phone && (
+            <ErrorMessage>{errors.phone.message}</ErrorMessage>
+          )}
 
           <ContactInput
             placeholder="Subject"
@@ -245,9 +239,11 @@ const Contact = () => {
             <ErrorMessage>{errors.message.message}</ErrorMessage>
           )}
 
-          <ReCAPTCHA
-            sitekey={RECAPTCHA_SITE_KEY}
-            onChange={handleCaptchaChange}
+          <Turnstile
+            siteKey="0x4AAAAAABnoZA0hHOCKATVN"
+            onSuccess={() => setVerified(true)}
+            onExpire={() => setVerified(false)}
+            options={{ theme: "dark" }}
           />
 
           <ContactButton
