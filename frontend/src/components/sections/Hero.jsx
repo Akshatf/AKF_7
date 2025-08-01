@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
@@ -11,8 +11,54 @@ import {
   headContentAnimation,
   headTextAnimation,
 } from "../../utils/motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
+// Toast trigger function with HTML content
+const showToast = () => {
+  toast.info(
+    <div>
+      Akshat just joined Infosys as an SDE Intern at Infosys 🎉&nbsp;
+      <a
+        href="https://wa.me/919425718644?text=Hey%20Akshat%2C%20Congratulations%20on%20joining%20Infosys!%20%F0%9F%8E%89"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: "#6C63FF", // Accent color
+          fontWeight: "bold",
+          textDecoration: "underline",
+        }}
+      >
+        {/* Congratulate him */}
+      </a>
+    </div>,
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      icon: false,
+      style: {
+        background: "#fff",
+        color: "#1e293b", // Slate-800
+        borderRadius: "12px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+        fontSize: "15px",
+        fontWeight: "500",
+        padding: "14px 16px",
+        maxWidth: "380px",
+        border: "1px solid #6C63FF", // Optional accent border
+      },
+      progressStyle: {
+        background: "#6C63FF", // Progress bar color
+        height: "4px",
+        borderRadius: "0 0 12px 12px",
+      },
+    }
+  );
+};
 
 const HeroContainer = styled.div`
   display: flex;
@@ -20,13 +66,13 @@ const HeroContainer = styled.div`
   position: relative;
   padding: 30px 30px;
   z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%);
   @media (max-width: 960px) {
     padding: 66px 16px;
   }
   @media (max-width: 640px) {
     padding: 32px 16px;
   }
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%);
 `;
 
 const HeroInnerContainer = styled.div`
@@ -59,20 +105,17 @@ const HeroRightContainer = styled.div`
   order: 2;
   display: flex;
   justify-content: end;
-  // padding-right:30px;
-  margin-bottom:50px;
+  margin-bottom: 50px;
   @media (max-width: 960px) {
     order: 1;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-contents: center;
+    justify-content: center;
     margin-bottom: 80px;
-    padding-right:0px;
+    padding-right: 0px;
   }
   @media (max-width: 640px) {
     margin-bottom: 30px;
-    padding-right:0px;
   }
 `;
 
@@ -83,8 +126,6 @@ const Title = styled.div`
   line-height: 68px;
   @media (max-width: 960px) {
     text-align: center;
-  }
-  @media (max-width: 960px) {
     font-size: 40px;
     line-height: 48px;
     margin-bottom: 8px;
@@ -100,8 +141,6 @@ const TextLoop = styled.div`
   line-height: 68px;
   @media (max-width: 960px) {
     text-align: center;
-  }
-  @media (max-width: 960px) {
     font-size: 22px;
     line-height: 48px;
     margin-bottom: 16px;
@@ -120,28 +159,17 @@ const SubTitle = styled.div`
   color: ${({ theme }) => theme.text_primary + 95};
   @media (max-width: 960px) {
     text-align: center;
-  }
-  @media (max-width: 960px) {
     font-size: 16px;
-    line-height: 32px;
   }
 `;
 
 const ResumeButton = styled.a`
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
   text-decoration: none;
   width: 95%;
   max-width: 300px;
   text-align: center;
   padding: 16px 0;
-  background: hsla(271, 100%, 50%, 1);
-  background: linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
+  background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
   box-shadow: 20px 20px 60px #1f2634, -20px -20px 60px #1f2634;
   border-radius: 50px;
   font-weight: 600;
@@ -150,7 +178,6 @@ const ResumeButton = styled.a`
   &:hover {
     transform: scale(1.05);
     transition: all 0.4s ease-in-out;
-    box-shadow: 20px 20px 60px #1f2634, -20px -20px 60px #1f2634;
     filter: brightness(1);
   }
   @media (max-width: 640px) {
@@ -160,24 +187,19 @@ const ResumeButton = styled.a`
 `;
 
 const Img = styled.img`
-  // border-radius: 50%;
   width: 69%;
-  margin-left:200px;
+  margin-left: 200px;
   height: 50%;
-  // margin-bottom:50px;
-  // max-width: 400px;
-  // max-height: 400px;
-  // border: 2px solid ${({ theme }) => theme.primary};
   @media (max-width: 640px) {
     max-width: 280px;
     max-height: 280px;
-     margin-left:41px;
+    margin-left: 41px;
   }
-  @media (min-width:640px){
-  margin-left:137px;
+  @media (min-width: 640px) {
+    margin-left: 137px;
   }
-  @media (min-width:910px){
-  margin-left:200px;
+  @media (min-width: 910px) {
+    margin-left: 200px;
   }
 `;
 
@@ -194,37 +216,12 @@ const HeroBg = styled.div`
   max-width: 1360px;
   overflow: hidden;
   padding: 0 30px;
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
   @media (max-width: 960px) {
     justify-content: center;
-    padding: 0 0px;
-  }
-`;
-
-// Bot button styles
-const BotButton = styled.button`
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.primary};
-  color: white;
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  &:hover {
-    transform: scale(1.1);
-    transition: all 0.3s ease;
+    padding: 0;
   }
 `;
 
@@ -237,15 +234,21 @@ const Hero = () => {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
+    const timeout = setTimeout(() => {
+      showToast();
+    }, 1000); // 1 second
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <div id="About">
       <HeroContainer>
         <HeroBg>
-          {/* <StarCanvas /> */}
           <HeroBgAnimation />
         </HeroBg>
         <motion.div {...headContainerAnimation}>
@@ -291,7 +294,7 @@ const Hero = () => {
           </HeroInnerContainer>
         </motion.div>
       </HeroContainer>
-
+      <ToastContainer />
     </div>
   );
 };
