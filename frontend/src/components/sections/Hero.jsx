@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 const showToast = () => {
   toast.info(
     <div>
-      Akshat just joined Infosys as an SDE Intern at Infosys 🎉&nbsp;
+      Akshat just joined Infosys as an SDE Intern 🎉&nbsp;
       <a
         href="https://wa.me/919425718644?text=Hey%20Akshat%2C%20Congratulations%20on%20joining%20Infosys!%20%F0%9F%8E%89"
         target="_blank"
